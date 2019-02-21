@@ -1,0 +1,10 @@
+2019-02-20 20:55:55 TRACE TerminalConsulta:54 - Aplicação funcionando normalmente!
+2019-02-20 21:22:08 WARN  TerminalConsulta:30 - Inicializando a aplicação!
+2019-02-20 21:22:11 DEBUG EstoqueBO:18 - Código pesquisado!401
+2019-02-20 21:22:28 WARN  TerminalConsulta:30 - Inicializando a aplicação!
+2019-02-20 21:23:08 DEBUG EstoqueBO:18 - Código pesquisado!221
+2019-02-20 21:23:08 ERROR EstoqueBO:32 - Produto não encontrado!221
+2019-02-20 21:23:20 WARN  TerminalConsulta:56 - Finalizando a aplicação!
+2019-02-20 21:23:59 WARN  TerminalConsulta:30 - Inicializando a aplicação!
+2019-02-20 21:24:03 DEBUG EstoqueBO:18 - Código pesquisado!221
+2019-02-20 21:24:03 ERROR EstoqueBO:32 - Produto não encontrado!221

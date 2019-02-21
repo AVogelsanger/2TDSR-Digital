@@ -1,29 +1,29 @@
 package br.com.fiap.loja.bo;
 
+import br.com.fiap.loja.exception.ProdutoNaoEncontradoException;
 import br.com.fiap.loja.to.ProdutoTO;
 
 public class EstoqueBO {
 	
-	ProdutoTO prod = new ProdutoTO(401, 10, 50, "camisa branca");
+	//ProdutoTO prod = new ProdutoTO(401, 10, 50, "camisa branca");
 
-	public ProdutoTO consultarProduto(int codigoProduto) {
+	public ProdutoTO consultarProduto(int codigoProduto) throws ProdutoNaoEncontradoException {
 	
+		ProdutoTO prod;
+		
 		switch (codigoProduto) {
+		
 		case 401:
-			System.out.println(" Code:" + prod.getCodigo() + "\n Preço: R$" + prod.getPreco() +
-								"\n Quantidade: " + prod.getQuantidade() + "\n Descrição: " + prod.getDescricao());
+			prod = new ProdutoTO(401, 10, 100, "camisa branca");
 			break;
 		case 402:
-			System.out.println(" Code:" + prod.getCodigo() + "\n Preço: R$" + prod.getPreco() +
-					"\n Quantidade: " + prod.getQuantidade() + "\n Descrição: " + prod.getDescricao());
+			prod = new ProdutoTO(402, 20, 50, "camisa azul");
 			break;
 		case 403:
-			System.out.println(" Code:" + prod.getCodigo() + "\n Preço: R$" + prod.getPreco() +
-					"\n Quantidade: " + prod.getQuantidade() + "\n Descrição: " + prod.getDescricao());
+			prod = new ProdutoTO(403, 30, 20, "camisa rosa");
 			break;	
 		default:
-			System.out.println("Produto não encontrado!");
-			break;
+			throw new ProdutoNaoEncontradoException();
 		}
 		return prod;
 		
