@@ -3,6 +3,7 @@
 	<name>06-WS-SOAP-Provider</name>
 	<comment></comment>
 	<projects>
+		<project>05-Loja-App</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
