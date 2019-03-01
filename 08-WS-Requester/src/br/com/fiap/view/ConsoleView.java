@@ -2,7 +2,7 @@ package br.com.fiap.view;
 
 import java.util.Scanner;
 
-import org.apache.axis2.AxisFault;
+//import org.apache.axis2.AxisFault;
 
 import br.com.fiap.bo.DisciplinaBOStub;
 import br.com.fiap.bo.DisciplinaBOStub.CalcularMedia;
