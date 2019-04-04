@@ -128,7 +128,7 @@ public class View {
 
 
 	public static void listar() {
-		EmpresaRepository rep = new EmpresaRepository();
+		//EmpresaRepository rep = new EmpresaRepository();
 		try {
 			List<EmpresaTO> lista = rep.listar();
 			
