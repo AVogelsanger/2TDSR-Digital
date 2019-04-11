@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" 
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>CADASTRO - JOGO</title>
+</h:head>
+<h:body>
+
+	<h:messages/>
+	
+	<h:form>
+		<div>
+			<h:outputLabel value="Nome"/>
+			<h:inputText value="#{jogoBean.jogo.nome}"/>
+		</div>
+		<div>
+			<h:outputLabel value="Genero"/>
+			<h:selectOneMenu value="#{jogoBean.jogo.genero}">
+				<f:selectItem itemLabel="Ação" itemValue="Ação"/>
+				<f:selectItem itemLabel="Esporte" itemValue="Esporte"/>
+				<f:selectItem itemLabel="RPG" itemValue="RPG"/>
+			</h:selectOneMenu>
+		</div>
+		<div>
+			<h:selectManyCheckbox value="#{jogoBean.jogo.plataforma}">
+				<f:selectItem itemLabel="PS4" itemValue="1"/>
+				<f:selectItem itemLabel="PC" itemValue="2"/>
+				<f:selectItem itemLabel="XBOX" itemValue="3"/>
+			</h:selectManyCheckbox>
+		</div>
+		<div>
+			<h:selectBooleanCheckbox value="#{jogoBean.jogo.demo}"/>
+			<h:outputLabel value="DEMO"/>
+		</div>
+		<div>
+			<h:outputLabel value="Jogadores"/>
+			<h:inputText value="#{jogoBean.jogo.jogadores}"/>
+		</div>
+		<div>
+			<h:outputLabel value="Preco"/>
+			<h:inputText value="#{jogoBean.jogo.preco}"/>
+		</div>
+		<div>
+			<h:commandButton value="Cadastrar" actionListener="#{jogoBean.cadastrar}"/>
+		</div>
+	</h:form>
+	
+	<h2>Lista de JOGOS</h2>
+
+	<h:dataTable value="#{jogoBean.listar()}" var="j">
+		<h:column>
+			<f:facet name="header">NOME</f:facet>
+			#{j.nome}
+		</h:column>
+		<h:column>
+			<f:facet name="header"> GÊNERO</f:facet>
+			#{j.genero}
+		</h:column>
+		<h:column>
+			<f:facet name="header"> PLATAFORMA</f:facet>
+			#{j.plataforma}
+		</h:column>
+		<h:column>
+			<f:facet name="header"> DEMO</f:facet>
+			#{j.demo}
+		</h:column>
+		<h:column>
+			<f:facet name="header"> JOGADORES</f:facet>
+			#{j.jogadores}
+		</h:column>
+		<h:column>
+			<f:facet name="header"> PREÇO</f:facet>
+			#{j.preco}
+		</h:column>	
+	</h:dataTable>
+	
+</h:body>
+</html>
+
+
+
+
+
+
+
+
+

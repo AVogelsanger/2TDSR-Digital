@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:ui="http://java.sun.com/jsf/facelets"
+	  xmlns:f="http://java.sun.com/jsf/core">
+
+<h:head>
+	<title>FILME</title>
+</h:head>
+<h:body>
+	<h1>CADASTRO DE FILME</h1>
+	
+	<h:form>
+		<div>
+			<h:outputLabel value="Título"/>
+			<h:inputText value="#{filmeBean.filme.titulo}"/>
+		</div>
+		<div>
+			<h:outputLabel value="Classificação"/>
+				<h:selectOneRadio value="#{filmeBean.filme.classificacao}">
+					<f:selectItem itemLabel="LIVRE" itemValue="LIVRE"/>
+					<f:selectItem itemLabel="ADULTO" itemValue="ADULTO"/>
+					<f:selectItem itemLabel="MAIOR" itemValue="MAIOR"/>
+				</h:selectOneRadio>
+		</div>
+		<div>
+			<h:outputLabel value="Duração"/>
+			<h:inputText value="#{filmeBean.filme.duracao}"/>
+		</div>
+		<div>
+			<h:outputLabel value="Estúdio"/>
+			<h:selectOneMenu value="#{filmeBean.filme.estudio}">
+				<f:selectItem itemLabel="marvel" itemValue="marvel"/>
+				<f:selectItem itemLabel="FOX" itemValue="FOX"/>
+				<f:selectItem itemLabel="WarnerBros" itemValue="WarnerBros"/>
+			</h:selectOneMenu>
+		</div>
+		<div>
+			<h:selectBooleanCheckbox value="#{filmeBean.filme.nacional}" id="nacional"/>
+		</div>
+		<div>
+			<h:commandButton value="Cadastrar" actionListener="#{filmeBean.cadastrar}"/>
+		</div>
+	</h:form>
+	
+	
+	
+	
+	
+</h:body>
+</html>
+
