@@ -1,11 +1,13 @@
 package br.com.fiap.bean;
 
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import br.com.fiap.exception.ResponseException;
@@ -13,7 +15,8 @@ import br.com.fiap.repository.EmpresaRepository;
 import br.com.fiap.to.EmpresaTO;
 
 @ManagedBean
-public class EmpresaBean {
+@ViewScoped
+public class EmpresaBean implements Serializable{
 
 	private EmpresaTO empresa;
 	private EmpresaRepository rep;
@@ -24,9 +27,22 @@ public class EmpresaBean {
 		rep = new EmpresaRepository();
 	}
 
-	
+
+	public void excluir(int codigo) {
+		try {
+			rep.remover(codigo);
+		} catch (ResponseException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private void exibirMessagem(String mensagem) {
+		FacesMessage msg = new FacesMessage(mensagem);
+		FacesContext.getCurrentInstance().addMessage(null, msg);
+	}
+
 	public List<EmpresaTO> listar(){
-		
+
 		try {
 			return rep.listar();
 		} catch (ResponseException e) {
@@ -34,20 +50,25 @@ public class EmpresaBean {
 		}
 		return null;
 	}
-	
+
 	public void cadastrar() {
-		FacesMessage msg;
 		try {
-			rep.cadastrar(empresa);
-			msg = new FacesMessage("Cadastrado!");
+			if (empresa.getCodigo() == 0) {
+				rep.cadastrar(empresa);
+				exibirMessagem("Cadastrado!");
+			}else {
+				rep.atualizar(empresa);
+				exibirMessagem("Atualizado!");
+			}
+
 		} catch (ResponseException e) {
 			e.printStackTrace();
-			msg = new FacesMessage("erro... ");
+			exibirMessagem("erro... ");
 		}
-		FacesContext.getCurrentInstance().addMessage(null, msg);
+
 	}
 
-	
+
 	public EmpresaTO getEmpresa() {
 		return empresa;
 	}
@@ -55,5 +76,5 @@ public class EmpresaBean {
 	public void setEmpresa(EmpresaTO empresa) {
 		this.empresa = empresa;
 	}
-	
+
 }

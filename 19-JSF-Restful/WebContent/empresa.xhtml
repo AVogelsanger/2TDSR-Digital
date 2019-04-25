@@ -16,23 +16,27 @@
 	<div class="container">
 	<h2>Cadastro de empresa</h2>
 
-	<h:messages/>
+	<h:messages styleClass="alert alert-success"/>
 	
 	<h:form>
-		<div>
+		<div class="form-group">
 			<h:outputLabel value="Nome" for="nome"/>
 			<h:inputText styleClass="form-control" value="#{empresaBean.empresa.nome}" id="nome"/>
 		</div>
-		<div>
+		<div class="form-group">
 			<h:outputLabel value="Faturamento" for="fat"/>
 			<h:inputText styleClass="form-control" value="#{empresaBean.empresa.faturamento}" id="fat"/>
 		</div>
-		<div>
-			<h:selectBooleanCheckbox styleClass="form-control" id="multi" value="#{empresaBean.empresa.multinacional}"/>
+		<div class="form-group">
+			<h:selectBooleanCheckbox id="multi" 
+					value="#{empresaBean.empresa.multinacional}"/>
 			<h:outputLabel value="Multinacional" for="multi"/>
 		</div>
-		<h:commandButton styleClass="form-control" value="Cadastrar" actionListener="#{empresaBean.cadastrar()}"/>
+		<h:commandButton styleClass="btn btn-success" 
+							value="#{empresaBean.empresa.codigo == 0 ? 'Cadastrar' : 'Atualizar'}" 
+										actionListener="#{empresaBean.cadastrar()}"/>
 	</h:form>
+	<br/>
 	
 	</div>
 	
@@ -55,7 +59,20 @@
 		</h:column>
 		<h:column>
 			<f:facet name="header"> MULTINACIONAL</f:facet>
-			#{e.multinacional}
+			#{e.multinacional?"SIM":"NÃO"}
+		</h:column>
+		<h:column>
+			<h:form>
+				<h:commandButton value="Editar" styleClass="btn btn-sm btn-outline-primary">
+					<f:setPropertyActionListener value="#{e}" target="#{empresaBean.empresa}"/>
+				</h:commandButton>
+			</h:form>
+		</h:column>
+		<h:column>
+			<h:form>
+				<h:commandButton value="Excluir" styleClass="btn btn-sm btn-outline-danger"
+					action="#{empresaBean.excluir(e.codigo)}"/>
+			</h:form>
 		</h:column>	
 	</h:dataTable>
 	

@@ -18,6 +18,7 @@ public class EmpresaTO {
 		this.faturamento = faturamento;
 		this.multinacional = multinacional;
 	}
+	
 
 
 	public int getCodigo() {

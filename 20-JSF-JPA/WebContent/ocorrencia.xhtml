@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+	<title>Cadastro de Ocorrência</title>
+	<h:outputStylesheet library="css" name="bootstrap.min.css"/>
+</h:head>
+<h:body>
+	<h1>CADASTRO DE OCORRÊNCIAS</h1>
+	<h:messages styleClass="alert alert-success"/>
+	<h:link outcome="lista-ocorrencia">Lista</h:link>
+	<h:form>
+		<div class="form-group">
+			<h:outputLabel value="Data" for="data"/>
+			<h:inputText id="data" styleClass="form-control" value="#{ocorrenciaBean.ocorrencia.data.time}">
+				<f:convertDateTime pattern="dd/MM/yyyy"/>
+			</h:inputText>
+		</div>
+		<div class="form-group">
+			<h:outputLabel value="Artigo" for="artigo"/>
+			<h:inputText id="artigo" styleClass="form-control" value="#{ocorrenciaBean.ocorrencia.artigo}"/>
+		</div>
+		<div class="form-check">
+			<h:selectBooleanCheckbox for="anonimo" styleClass="form-check-" 
+					value="#{ocorrenciaBean.ocorrencia.anonimo}"/>
+					<h:outputLabel value="Anônimo" id="anonimo"/>
+		</div>
+		<div class="form-group">
+			<h:outputLabel value="Denunciante" for="den"/>
+			<h:inputText id="den" styleClass="form-control" value="#{ocorrenciaBean.ocorrencia.denunciante}"/>
+		</div>
+		<div class="form-group">
+			<h:outputLabel value="Descrição" for="desc"/>
+			<h:inputText id="desc" styleClass="form-control" value="#{ocorrenciaBean.ocorrencia.descricao}"/>
+		</div>
+		<h:commandButton value="Cadastrar" action="#{ocorrenciaBean.cadastrar}" 
+					styleClass="btn btn-primary"/>
+	</h:form>
+	
+</h:body>
+</html>
