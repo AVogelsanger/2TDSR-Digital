@@ -1,0 +1,8 @@
+titulo_pagina = Cadastro de Ocorrência
+link_lista = Lista
+lbl_data = Data
+lbl_artigo = Artigo
+lbl_anonimo = Anônimo
+lbl_descricao = Descrição
+lbl_denunciante = Denunciante
+btn_cadastrar = Cadastrar

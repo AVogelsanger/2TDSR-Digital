@@ -9,10 +9,13 @@
 <ui:composition template="_template.xhtml">
 	<ui:define name="title">Cadastro de Ocorrência</ui:define>
 	<ui:define name="content">
-
-		<h1>CADASTRO DE OCORRÊNCIAS</h1>
-		<h:messages styleClass="alert alert-success" />
-		<h:link outcome="lista-ocorrencia">Lista</h:link>
+	
+ 	<f:loadBundle var="b"
+				basename="br.com.fiap.bundle.ocorrencia"/>
+	
+		<h1>#{b.titulo_pagina}</h1>
+		<h:link outcome="lista-ocorrencia">#{b.link_lista}</h:link>
+		<h:messages styleClass="alert alert-danger"/>
 
 		<h:form>
 			<h:inputHidden value="#{ocorrenciaBean.ocorrencia.codigo}"/>
