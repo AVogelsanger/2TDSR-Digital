@@ -70,7 +70,7 @@ public class Teste {
 		System.out.println("Digite o código: ");
 		int c = scan.nextInt();
 		
-		VendaTO v = serv.pesquisar(c);
+		VendaTO v = serv.pesquisar();
 		System.out.println("Descrição: " + v.getDescricao());
 		System.out.println("Valor: " + v.getValor());
 		System.out.println("Data: " + v.getData());

@@ -54,7 +54,7 @@ public class VendaService {
 
 
 	public VendaTO pesquisar() {
-		WebResource resource = client.resource("URL");
+		WebResource resource = client.resource(URL);
 
 		ClientResponse response = resource.accept(MediaType.APPLICATION_JSON).get(ClientResponse.class);
 

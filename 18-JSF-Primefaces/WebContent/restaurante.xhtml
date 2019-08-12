@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="_template.xhtml">
+	<ui:define name="titulo">
+	    Cadastro de Restaurante
+	</ui:define>
+	<ui:define name="conteudo">
+	    
+	    <h2>Cadastro de Restaurante</h2>
+	    
+	    <h:form>
+	    	<p:growl/>
+	    	<h:panelGrid columns="2">
+	    		
+	    		<p:outputLabel value="Nome" for="nome"/>
+	    		<p:inputText id="nome"
+	    			value="#{restauranteBean.restaurante.nome}"/>
+	    			
+	    		<p:outputLabel value="CEP" for="cep"/>
+	    		<p:inputMask mask="99999-999" id="cep"
+	    			value="#{restauranteBean.restaurante.cep}"/>
+	    		
+	    		<p:outputLabel value="Qualificacao" for="qua"/>
+	    		<p:rating id="qua"
+	    			value="#{restauranteBean.restaurante.qualificacao}"/>
+	    		
+	    		<p:outputLabel value="Data abertura" for="data"/>
+	    		<p:calendar id="data"
+	    			value="#{restauranteBean.restaurante.dataAbertura.time}"/>
+	    			
+	    		<p:commandButton value="Cadastrar"
+	    						action="#{restauranteBean.cadastrar}"/>					
+	    	</h:panelGrid>
+		</h:form>
+		
+	    <h2>Restaurante</h2>
+	    <h:form>
+	    	<p:outputLabel value="Nome"/>
+	    	<p:autoComplete value="#{restauranteBean.nomeBusca}" completeMethod="#{restauranteBean.completaNomeRestaurante	}"/>
+	    	<p:commandButton update="tabela" value="Buscar" action="#{restauranteBean.buscar}"/>
+	    </h:form>
+	    
+	    <p:dataTable id="tabela" value="#{restauranteBean.lista}" var="rest" 
+	    		paginator="true" rows="3" rowsPerPageTemplate="3,6,9">
+				<p:column headerText="Nome">
+					#{rest.nome}
+				</p:column>
+				<p:column headerText="Cep">
+					#{rest.cep}
+				</p:column>
+				<p:column headerText="Qualificação">
+					<p:rating value="#{rest.qualificacao}" />
+				</p:column>
+				<p:column headerText="Data de Abertura">
+					<h:outputText value="#{rest.dataAbertura.time}">
+						<f:convertDateTime pattern="dd/MM/yyyy" />
+					</h:outputText>
+			</p:column>
+		</p:dataTable>
+	    
+	</ui:define>
+</ui:composition>
+</html>
+
+
